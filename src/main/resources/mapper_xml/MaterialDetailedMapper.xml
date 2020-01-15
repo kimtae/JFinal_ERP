@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jsh.erp.datasource.mappers.MaterialDetailedMapper">
+  <resultMap id="BaseResultMap" type="com.jsh.erp.datasource.entities.MaterialDetailed">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="material_name" jdbcType="VARCHAR" property="materialName" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="car_number" jdbcType="INTEGER" property="carNumber" />
+    <result column="tonnage" jdbcType="VARCHAR" property="tonnage" />
+    <result column="receipt_date" jdbcType="DATE" property="receiptDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, material_name, unit, car_number, tonnage, receipt_date
+  </sql>
+  <select id="selectByExample" parameterType="com.jsh.erp.datasource.entities.MaterialDetailedExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from jsh_material_detailed
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jsh_material_detailed
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jsh_material_detailed
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.jsh.erp.datasource.entities.MaterialDetailedExample">
+    delete from jsh_material_detailed
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.jsh.erp.datasource.entities.MaterialDetailed">
+    insert into jsh_material_detailed (id, material_name, unit, 
+      car_number, tonnage, receipt_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{materialName,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{carNumber,jdbcType=INTEGER}, #{tonnage,jdbcType=VARCHAR}, #{receiptDate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jsh.erp.datasource.entities.MaterialDetailed">
+    insert into jsh_material_detailed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="materialName != null">
+        material_name,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="carNumber != null">
+        car_number,
+      </if>
+      <if test="tonnage != null">
+        tonnage,
+      </if>
+      <if test="receiptDate != null">
+        receipt_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="materialName != null">
+        #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="carNumber != null">
+        #{carNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tonnage != null">
+        #{tonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptDate != null">
+        #{receiptDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.jsh.erp.datasource.entities.MaterialDetailedExample" resultType="java.lang.Long">
+    select count(*) from jsh_material_detailed
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update jsh_material_detailed
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.materialName != null">
+        material_name = #{record.materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carNumber != null">
+        car_number = #{record.carNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.tonnage != null">
+        tonnage = #{record.tonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiptDate != null">
+        receipt_date = #{record.receiptDate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update jsh_material_detailed
+    set id = #{record.id,jdbcType=INTEGER},
+      material_name = #{record.materialName,jdbcType=VARCHAR},
+      unit = #{record.unit,jdbcType=VARCHAR},
+      car_number = #{record.carNumber,jdbcType=INTEGER},
+      tonnage = #{record.tonnage,jdbcType=VARCHAR},
+      receipt_date = #{record.receiptDate,jdbcType=DATE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jsh.erp.datasource.entities.MaterialDetailed">
+    update jsh_material_detailed
+    <set>
+      <if test="materialName != null">
+        material_name = #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="carNumber != null">
+        car_number = #{carNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tonnage != null">
+        tonnage = #{tonnage,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptDate != null">
+        receipt_date = #{receiptDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jsh.erp.datasource.entities.MaterialDetailed">
+    update jsh_material_detailed
+    set material_name = #{materialName,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      car_number = #{carNumber,jdbcType=INTEGER},
+      tonnage = #{tonnage,jdbcType=VARCHAR},
+      receipt_date = #{receiptDate,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

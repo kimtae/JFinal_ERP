@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="jfinal_ERP:war exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/jfinal_ERP_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="jfinal_ERP" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: cn.hutool:hutool-all:5.1.0" />
+          <element id="library" level="project" name="Maven: com.jfinal:jfinal:4.8" />
+          <element id="library" level="project" name="Maven: com.jfinal:jfinal-undertow:2.0" />
+          <element id="library" level="project" name="Maven: io.undertow:undertow-core:2.0.28.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.4.0.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.xnio:xnio-api:3.3.8.Final" />
+          <element id="library" level="project" name="Maven: org.jboss.xnio:xnio-nio:3.3.8.Final" />
+          <element id="library" level="project" name="Maven: io.undertow:undertow-servlet:2.0.28.Final" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.29" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.44" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.0.29" />
+          <element id="library" level="module" name="Maven: com.alibaba:jconsole:1.8.0" module-name="jfinal_ERP" />
+          <element id="library" level="module" name="Maven: com.alibaba:tools:1.8.0" module-name="jfinal_ERP" />
+          <element id="library" level="project" name="Maven: com.jfinal:cos:2019.8" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="jfinal_ERP/web/Web" />
+    </root>
+  </artifact>
+</component>
